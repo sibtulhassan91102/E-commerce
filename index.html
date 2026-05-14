@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       META & SEO
+  ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aurora Luxe – Premium luxury shopping for watches, earbuds, fragrances & fashion." />
+  <title>Aurora Luxe | Premium Collection</title>
+
+  <!-- ============================================================
+       EXTERNAL FONTS
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================
+       FONT AWESOME (icons)
+  ============================================================ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- ============================================================
+       STYLESHEET (separate file)
+  ============================================================ -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       OVERLAY for modals
+  ============================================================ -->
+  <div class="overlay" id="overlay" onclick="closeAllModals()"></div>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+
+      <!-- Logo -->
+      <a href="#" class="logo">
+        <span class="logo-icon">&#x2618;</span>
+        <span class="logo-text"><span class="logo-a">A</span><br/><small>AURORA LUXE</small></span>
+      </a>
+
+      <!-- Search bar -->
+      <div class="nav-search">
+        <input type="text" placeholder="Search for products, brands..." id="searchInput" />
+        <button class="search-btn" onclick="handleSearch()"><i class="fas fa-search"></i></button>
+      </div>
+
+      <!-- Nav links -->
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">HOME</a>
+        <a href="#bestsellers">COLLECTIONS</a>
+        <a href="#bestsellers">NEW ARRIVALS</a>
+        <a href="#bestsellers">BEST SELLERS</a>
+        <div class="nav-dropdown">
+          <a href="#categories">SHOP BY CATEGORY <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="#categories">Men</a>
+            <a href="#categories">Women</a>
+            <a href="#categories">Electronics</a>
+            <a href="#categories">Health</a>
+            <a href="#categories">Fashion</a>
+          </div>
+        </div>
+        <a href="#" onclick="openModal('wishlistModal')">MORE</a>
+      </nav>
+
+      <!-- Nav actions -->
+      <div class="nav-actions">
+        <button class="nav-btn" onclick="openModal('wishlistModal')" title="Wishlist">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button class="nav-btn cart-btn" onclick="openModal('cartModal')" title="Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="nav-btn" onclick="openModal('loginModal')" title="User Profile">
+          <i class="fas fa-user"></i>
+        </button>
+        <span class="nav-label" onclick="openModal('loginModal')">USER PROFILE</span>
+
+        <!-- Mobile hamburger -->
+        <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SECTION 1 – HERO / LANDING PAGE
+  ============================================================ -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="landing_page.png" alt="Aurora Luxe Premium Collection" class="hero-img" />
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-badge">FLAT 40% OFF</p>
+      <h1 class="hero-title">THE PREMIUM<br/>COLLECTION<br/>IS HERE</h1>
+      <p class="hero-sub">SHOP THE LATEST TRENDS &amp; STYLE</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="scrollToSection('bestsellers')">SHOP NOW</button>
+        <button class="btn-outline" onclick="scrollToSection('categories')">EXPLORE MORE</button>
+      </div>
+    </div>
+    <div class="hero-discount-badge">
+      <span>40%</span>
+      <small>OFF</small>
+    </div>
+
+    <!-- Featured product strip below hero -->
+    <div class="hero-products">
+      <div class="hero-product-card" onclick="addToCart('Luxury Watch', 149)">
+        <img src="landing_page.png" alt="Luxury Watch" class="hp-img watch-img" />
+        <p>Luxury Watch</p>
+        <span>$149.00</span>
+        <button class="btn-add-sm">ADD TO CART</button>
+      </div>
+      <div class="hero-product-card" onclick="addToCart('Premium Wireless Earbuds', 239)">
+        <img src="best_seller.png" alt="Earbuds" class="hp-img earbuds-img" />
+        <p>Premium Wireless Earbuds</p>
+        <span>$239.00</span>
+        <button class="btn-add-sm">ADD TO CART</button>
+      </div>
+      <div class="hero-product-card" onclick="addToCart('Bespoke Leather Handbag', 200)">
+        <img src="category.png" alt="Handbag" class="hp-img bag-img" />
+        <p>Bespoke Leather Handbag</p>
+        <span>$200.00</span>
+        <button class="btn-add-sm">ADD TO CART</button>
+      </div>
+      <div class="hero-product-card" onclick="addToCart('High-End Perfume', 199)">
+        <img src="best_seller.png" alt="Perfume" class="hp-img perfume-img" />
+        <p>High-End Perfume</p>
+        <span>$199.00</span>
+        <button class="btn-add-sm">ADD TO CART</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2 – BEST SELLERS
+  ============================================================ -->
+  <section class="best-sellers" id="bestsellers">
+    <div class="section-header">
+      <h2 class="section-title">BEST SELLERS</h2>
+      <div class="title-line"></div>
+    </div>
+
+    <div class="products-grid" id="bestSellersGrid">
+      <!-- Product cards rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3 – FLASH SALE / LIMITED OFFER
+  ============================================================ -->
+  <section class="flash-sale" id="flashsale">
+    <div class="flash-bg">
+      <img src="limited_sale.png" alt="Flash Sale" class="flash-bg-img" />
+      <div class="flash-overlay"></div>
+    </div>
+
+    <div class="flash-header">
+      <h2>FLASH SALE: <span class="gold">LIMITED OFFER!</span></h2>
+      <div class="countdown">
+        <span>ENDS IN:</span>
+        <div class="timer-block"><span id="timerHrs">04</span><small>Hrs</small></div>
+        <div class="timer-sep">:</div>
+        <div class="timer-block"><span id="timerMins">15</span><small>Mins</small></div>
+        <div class="timer-sep">:</div>
+        <div class="timer-block"><span id="timerSecs">33</span><small>Secs</small></div>
+      </div>
+    </div>
+
+    <div class="flash-side-label left">
+      <span>FLASH</span><span>SALE</span>
+    </div>
+    <div class="flash-side-label right">
+      <span>LIMIT</span><span>STOCK</span>
+    </div>
+
+    <div class="flash-products" id="flashProductsGrid">
+      <!-- Flash products rendered by JS -->
+    </div>
+
+    <button class="flash-arrow left-arrow" onclick="scrollFlash(-1)">&#8249;</button>
+    <button class="flash-arrow right-arrow" onclick="scrollFlash(1)">&#8250;</button>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4 – BROWSE BY CATEGORY
+  ============================================================ -->
+  <section class="categories" id="categories">
+    <div class="section-header">
+      <h2 class="section-title">BROWSE BY CATEGORY</h2>
+      <div class="title-line"></div>
+    </div>
+
+    <div class="category-grid">
+      <div class="cat-card men" onclick="filterCategory('Men')">
+        <img src="category.png" alt="Men" />
+        <div class="cat-label">MEN</div>
+        <button class="btn-cat">EXPLORE</button>
+      </div>
+      <div class="cat-card women" onclick="filterCategory('Women')">
+        <img src="category.png" alt="Women" />
+        <div class="cat-label">WOMEN</div>
+        <button class="btn-cat">DISCOVER</button>
+      </div>
+      <div class="cat-card electronics active-cat" onclick="filterCategory('Electronics')">
+        <img src="category.png" alt="Electronics" />
+        <div class="cat-icon"><i class="fas fa-microchip"></i></div>
+        <div class="cat-label">ELECTRONICS</div>
+        <button class="btn-cat">SHOP NOW</button>
+      </div>
+      <div class="cat-card health" onclick="filterCategory('Health')">
+        <img src="category.png" alt="Health" />
+        <div class="cat-icon"><i class="fas fa-headphones"></i></div>
+        <div class="cat-label">HEALTH</div>
+        <button class="btn-cat">VIEW DETAILS</button>
+      </div>
+      <div class="cat-card fashion" onclick="filterCategory('Fashion')">
+        <img src="category.png" alt="Fashion" />
+        <div class="cat-icon"><i class="fas fa-tshirt"></i></div>
+        <div class="cat-label">FASHION</div>
+        <button class="btn-cat">SHOP THE LOOK</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5 – CLIENT REVIEWS
+  ============================================================ -->
+  <section class="reviews" id="reviews">
+    <div class="reviews-bg">
+      <img src="review.png" alt="Reviews background" class="reviews-bg-img" />
+      <div class="reviews-overlay"></div>
+    </div>
+
+    <div class="section-header">
+      <h2 class="section-title dark">WHAT OUR CLIENTS ARE SAYING</h2>
+      <div class="title-line dark"></div>
+    </div>
+
+    <div class="reviews-grid">
+      <!-- Review cards rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6 – FOOTER
+  ============================================================ -->
+  <footer class="footer" id="footer">
+    <div class="footer-inner">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon gold">&#x2618;</span>
+          <span class="footer-logo-text"><span class="logo-a">A</span><br/><small>AURORA LUXE</small></span>
+        </div>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Shop by Category -->
+      <div class="footer-col">
+        <h4>SHOP BY CATEGORY</h4>
+        <a href="#">Watches</a>
+        <a href="#">Earbuds</a>
+        <a href="#">Fragrance</a>
+        <a href="#">Accessories</a>
+      </div>
+
+      <!-- Client Care -->
+      <div class="footer-col">
+        <h4>CLIENT CARE</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+
+      <!-- Our Company -->
+      <div class="footer-col">
+        <h4>OUR COMPANY</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col contact-col">
+        <h4>CONTACT INFORMATION</h4>
+        <p><i class="fas fa-phone"></i> (123) 456-7800</p>
+        <p><i class="fas fa-envelope"></i> email::sv@auroraluxe.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Lane, New York, NY</p>
+
+        <h4 style="margin-top:1.2rem;">PAYMENT METHODS</h4>
+        <div class="payment-icons">
+          <span class="pay-icon">VISA</span>
+          <span class="pay-icon">MC</span>
+          <span class="pay-icon">AMEX</span>
+          <span class="pay-icon">PP</span>
+          <span class="pay-icon">&#xf10b; Pay</span>
+          <span class="pay-icon">G Pay</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-copy">
+      <p>COPYRIGHT SECTION</p>
+      <p>&copy; 2024 AURORA LUXE. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MODAL – LOGIN
+  ============================================================ -->
+  <div class="modal" id="loginModal">
+    <div class="modal-box glass-modal">
+      <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
+      <div class="modal-logo">
+        <span class="logo-icon gold">&#x2618;</span>
+        <div class="modal-logo-text"><span class="logo-a">A</span><br/><small>AURORA LUXE</small></div>
+      </div>
+      <h3 class="modal-title">CLIENT LOGIN</h3>
+      <div class="modal-form">
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="text" placeholder="Email or Phone" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" />
+        </div>
+        <div class="modal-row">
+          <label><input type="checkbox" /> Remember Me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        <button class="btn-gold full" onclick="handleLogin()">LOGIN</button>
+        <p class="or-divider">OR LOGIN WITH:</p>
+        <div class="social-btns">
+          <button class="social-btn g"><i class="fab fa-google"></i></button>
+          <button class="social-btn f"><i class="fab fa-facebook-f"></i></button>
+          <button class="social-btn a"><i class="fab fa-apple"></i></button>
+        </div>
+        <p class="switch-modal">Don't have an account? <a href="#" onclick="switchModal('loginModal','signupModal')">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL – SIGN UP
+  ============================================================ -->
+  <div class="modal" id="signupModal">
+    <div class="modal-box glass-modal">
+      <button class="modal-close" onclick="closeModal('signupModal')">&times;</button>
+      <h3 class="modal-title">CLIENT REGISTRATION</h3>
+      <div class="modal-form">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="FULL NAME" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="EMAIL ADDRESS" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="PASSWORD" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="CONFIRM PASSWORD" />
+        </div>
+        <button class="btn-gold full" onclick="handleSignup()">SIGN UP</button>
+        <p class="or-divider">OR SIGN UP WITH:</p>
+        <div class="social-btns">
+          <button class="social-btn g"><i class="fab fa-google"></i></button>
+          <button class="social-btn f"><i class="fab fa-facebook-f"></i></button>
+          <button class="social-btn a"><i class="fab fa-apple"></i></button>
+        </div>
+        <p class="switch-modal">Already have an account? <a href="#" onclick="switchModal('signupModal','loginModal')">Login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL – CART / ORDER SUMMARY
+  ============================================================ -->
+  <div class="modal wide-modal" id="cartModal">
+    <div class="modal-box cart-modal-box">
+      <button class="modal-close" onclick="closeModal('cartModal')">&times;</button>
+      <h3 class="modal-title left">YOUR CART ITEMS (<span id="cartItemCount">0</span>)</h3>
+
+      <div class="cart-layout">
+        <!-- Cart items list -->
+        <div class="cart-items" id="cartItemsList">
+          <p class="empty-cart">Your cart is empty.</p>
+        </div>
+
+        <!-- Order summary panel -->
+        <div class="order-summary">
+          <h4>ORDER SUMMARY</h4>
+          <div class="summary-row"><span>SUBTOTAL</span><span id="summarySubtotal">$0.00</span></div>
+          <div class="summary-row"><span>ESTIMATED SHIPPING</span><span>$15.00</span></div>
+          <div class="summary-row"><span>ESTIMATED TAX (6%)</span><span id="summaryTax">$0.00</span></div>
+          <div class="summary-row discount"><span>COUPON DISCOUNT</span><span>-$0.00</span></div>
+          <div class="coupon-row">
+            <input type="text" placeholder="Enter code" id="couponInput" />
+            <button class="btn-apply" onclick="applyCoupon()">APPLY</button>
+          </div>
+          <button class="btn-gold full" onclick="proceedToCheckout()">PROCEED TO CHECKOUT</button>
+          <p class="secure-note"><i class="fas fa-lock"></i> Secure checkout with VISA, AMEX, PP</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL – CHECKOUT / PLACE ORDER
+  ============================================================ -->
+  <div class="modal wide-modal" id="checkoutModal">
+    <div class="modal-box checkout-modal-box">
+      <button class="modal-close" onclick="closeModal('checkoutModal')">&times;</button>
+
+      <div class="checkout-layout">
+
+        <!-- Left: Billing -->
+        <div class="checkout-col">
+          <div class="checkout-section">
+            <h4>1. Billing Address</h4>
+            <div class="form-row">
+              <div class="input-group sm"><i class="fas fa-user"></i><input type="text" placeholder="First Name" /></div>
+              <div class="input-group sm"><i class="fas fa-user"></i><input type="text" placeholder="Last Name" /></div>
+            </div>
+            <div class="input-group"><i class="fas fa-home"></i><input type="text" placeholder="Street Address" /></div>
+            <div class="input-group"><i class="fas fa-city"></i><input type="text" placeholder="City" /></div>
+            <div class="form-row">
+              <div class="input-group sm"><i class="fas fa-mail-bulk"></i><input type="text" placeholder="Zip Code" /></div>
+              <div class="input-group sm"><i class="fas fa-phone"></i><input type="text" placeholder="Phone Number" /></div>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <h4>3. Payment Method</h4>
+            <div class="payment-methods">
+              <label class="pay-method active"><input type="radio" name="pay" checked /> Credit/Debit Card <span>VISA MC</span></label>
+              <label class="pay-method"><input type="radio" name="pay" /> PayPal</label>
+              <label class="pay-method"><input type="radio" name="pay" /> Gift Card</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle: Shipping & Complete -->
+        <div class="checkout-col">
+          <div class="checkout-section">
+            <h4>2. Shipping Address</h4>
+            <label class="check-label"><input type="checkbox" checked /> Ship to Billing Address</label>
+            <label class="check-label"><input type="checkbox" /> Ship to a Different Address (optional)</label>
+            <h5>Shipping Methods</h5>
+            <label class="check-label"><input type="radio" name="ship" /> Economy (Free, 5-7 days)</label>
+            <label class="check-label"><input type="radio" name="ship" checked /> Express ($15.00, 2-3 days)</label>
+          </div>
+          <div class="checkout-section">
+            <h4>Complete Order</h4>
+            <div class="security-badges">
+              <span><i class="fas fa-shield-alt"></i> Norton SECURED</span>
+              <span><i class="fas fa-lock"></i> SSL Encryption</span>
+              <span class="opt">(optional)</span>
+            </div>
+            <label class="check-label"><input type="checkbox" /> Save this information for next time</label>
+          </div>
+        </div>
+
+        <!-- Right: Order summary -->
+        <div class="checkout-summary">
+          <h4>ORDER SUMMARY</h4>
+          <div id="checkoutItems"></div>
+          <div class="summary-row"><span>SUBTOTAL</span><span id="coSubtotal">$0.00</span></div>
+          <div class="summary-row"><span>Economy Shipping</span><span>$15.00</span></div>
+          <div class="summary-row"><span>ESTIMATED TAX (6%)</span><span id="coTax">$0.00</span></div>
+          <div class="summary-row"><span>COUPON DISCOUNT</span><span>-$0.00</span></div>
+          <div class="coupon-row">
+            <input type="text" placeholder="Enter code" />
+            <button class="btn-apply">APPLY</button>
+          </div>
+          <div class="summary-total"><span>TOTAL</span><span id="coTotal">$0.00</span></div>
+          <button class="btn-gold full" onclick="placeOrder()">PLACE ORDER</button>
+          <p class="secure-note"><i class="fas fa-lock"></i> Secure checkout with VISA, AMEX, PP</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NOTIFICATION TOAST
+  ============================================================ -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ============================================================
+       SCROLL TO TOP BUTTON
+  ============================================================ -->
+  <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ============================================================
+       JAVASCRIPT (separate file)
+  ============================================================ -->
+  <script src="script.js"></script>
+</body>
+</html>
